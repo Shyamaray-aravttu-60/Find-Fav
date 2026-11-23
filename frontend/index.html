@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FindFav – gifts for every occasion</title>
+  <meta name="description" content="Tell us the occasion and get a ranked list of gifts from the catalog.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="brand">FindFav</p>
+
+      <form id="search-form" class="finder" role="search" autocomplete="off">
+        <h1 class="finder__title">What are you celebrating?</h1>
+
+        <label class="finder__label" for="occasion">Which occasion are you shopping for?</label>
+        <div class="finder__row">
+          <input id="occasion" name="occasion" class="finder__input" type="text"
+                 maxlength="120" placeholder="Diwali, a wedding, mum’s birthday…"
+                 autocomplete="off" spellcheck="false" required>
+          <button id="search-btn" class="btn" type="submit">Find gifts</button>
+        </div>
+
+        <ul id="chips" class="chips" aria-label="Popular occasions"></ul>
+
+        <div class="finder__foot">
+          <fieldset class="modes">
+            <legend>Match using</legend>
+            <label class="mode"><input type="radio" name="mode" value="hybrid" checked><span>Hybrid</span></label>
+            <label class="mode"><input type="radio" name="mode" value="keyword"><span>Keywords only</span></label>
+            <label class="mode"><input type="radio" name="mode" value="semantic"><span>Meaning only</span></label>
+          </fieldset>
+          <p id="engine-status" class="engine" role="status">
+            <span class="engine__dot" aria-hidden="true"></span>
+            <span id="engine-text">Checking the recommendation engine…</span>
+          </p>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <main class="results" id="results" aria-labelledby="results-title" tabindex="-1">
+    <div class="wrap">
+      <div id="results-head" class="results__head" hidden>
+        <h2 id="results-title" class="results__title"></h2>
+        <p id="results-meta" class="results__meta"></p>
+      </div>
+      <div id="notices"></div>
+      <div id="live" class="sr-only" aria-live="polite"></div>
+      <div id="grid" class="grid" aria-busy="false"></div>
+      <section id="state" class="state" hidden></section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">Ranked by keyword rules and Ollama embeddings (cosine similarity). Prices in ₹.</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
